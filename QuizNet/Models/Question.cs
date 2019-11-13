@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 
 namespace QuizNet.Models
 {
-    public class Student
+    public class Question
     {
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName{ get; set; }
-        public int Index { get; set; }
+        public string Text { get; set; }
+        public Answer[] Answers { get; set; }
+        public int CorrectAnswerIndex { get; set; }
+
     }
 }
