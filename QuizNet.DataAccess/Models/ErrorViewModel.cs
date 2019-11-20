@@ -1,6 +1,6 @@
 using System;
 
-namespace QuizNet.Models
+namespace QuizNet.DataAccess.Models
 {
     public class ErrorViewModel
     {

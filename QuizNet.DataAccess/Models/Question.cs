@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace QuizNet.Models
+namespace QuizNet.DataAccess.Models
 {
     public class Question
     {
