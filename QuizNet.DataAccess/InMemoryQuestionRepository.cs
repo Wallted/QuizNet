@@ -80,6 +80,26 @@ namespace QuizNet.DataAccess
 
         public void Add(Question question)
         {
+            var questions = GetAll();
+            int newQuestionId, lastAnswerId;
+            if (questions.Any())
+            {
+                newQuestionId = GetAll().Last().Id + 1;
+                lastAnswerId = GetAll().LastOrDefault().Answers.LastOrDefault().Id;
+            }
+            else
+            {
+                newQuestionId = 1;
+                lastAnswerId = 1;
+            }
+
+            question.Id = newQuestionId;
+            for (int i = 0; i < question.Answers.Length; i++)
+            {
+                question.Answers[i].Id = lastAnswerId + i + 1;
+                question.Answers[i].QuestionId = newQuestionId;
+            }
+
             _questions.Add(question);
         }
 
