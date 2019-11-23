@@ -43,18 +43,6 @@ namespace QuizNet.Controllers
         [HttpPost]
         public IActionResult Create(Question question)
         {
-
-            var newQuestionId = _questionRepository.GetAll().Last().Id + 1;
-            question.Id = newQuestionId;
-
-            var lastAnswerId = _questionRepository.GetAll().LastOrDefault().Answers.LastOrDefault().Id;
-
-            for (int i = 0; i < question.Answers.Length; i++)
-            {
-                question.Answers[i].Id = lastAnswerId + i + 1;
-                question.Answers[i].QuestionId = newQuestionId;
-            }
-
             _questionRepository.Add(question);
             
             return RedirectToAction("Get", new { Id = question.Id});
