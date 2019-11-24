@@ -8,7 +8,7 @@ namespace QuizNet.DataAccess
 {
     public class InMemoryQuestionRepository : IQuestionRepository
     {
-        private static readonly List<Question> _questions = new List<Question>()
+        private static List<Question> _questions = new List<Question>()
         {
             new Question()
             {
@@ -121,7 +121,13 @@ namespace QuizNet.DataAccess
 
         public void Update(Question updatedQuestion)
         {
-            throw new NotImplementedException();
+            var prevQuestion = _questions.SingleOrDefault(x => x.Id == updatedQuestion.Id);
+            _questions.Remove(prevQuestion);
+            _questions.Add(updatedQuestion);
+            _questions = (from element in _questions
+                         orderby element.Id
+                         ascending
+                         select element).ToList();
         }
     }
 }

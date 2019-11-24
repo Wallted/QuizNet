@@ -9,6 +9,7 @@
 <div>
     <h3>@question.Text</h3>
     <a type="button" class="btn btn-primary" asp-controller="Question" asp-action="Get" asp-route-id="@question.Id.ToString()">Details</a>
+    <a type="button" class="btn btn-warning" asp-controller="Question" asp-action="Update" asp-route-id="@question.Id.ToString()">Update</a>
     <a type="button" class="btn btn-danger" asp-controller="Question" asp-action="Delete" asp-route-id="@question.Id.ToString()">Delete</a>
     <ul class="list-group">
         @foreach (var answer in question.Answers)

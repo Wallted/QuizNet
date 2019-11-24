@@ -47,5 +47,20 @@ namespace QuizNet.Controllers
             
             return RedirectToAction("Get", new { Id = question.Id});
         }
+
+        public IActionResult Update(int id)
+        {
+            var questionToUpdate = _questionRepository.GetById(id);
+
+            return View(questionToUpdate);
+        }
+
+        [HttpPost]
+        public IActionResult Update(Question questionToUpdate)
+        {
+            _questionRepository.Update(questionToUpdate);
+
+            return RedirectToAction("Get", new { Id = questionToUpdate.Id });
+        }
     }
 }
