@@ -6,19 +6,32 @@
 <br />
 @foreach (var question in Model)
 {
-<div>
-    <h3>@question.Text</h3>
-    <a type="button" class="btn btn-primary" asp-controller="Question" asp-action="Get" asp-route-id="@question.Id.ToString()">Details</a>
-    <a type="button" class="btn btn-warning" asp-controller="Question" asp-action="Update" asp-route-id="@question.Id.ToString()">Update</a>
-    <a type="button" class="btn btn-danger" asp-controller="Question" asp-action="Delete" asp-route-id="@question.Id.ToString()">Delete</a>
-    <ul class="list-group">
-        @foreach (var answer in question.Answers)
-        {
-            <li class="list-group-item">@answer.Text</li>
-        }
-    </ul>
-</div>
-    <br />
+    <div class="mb-5">
+
+        <div class="row">
+            <div class="col-sm-9">
+                <h3>@question.Text</h3>
+            </div>
+            <div class="col-sm-1">
+                <a type="button" class="btn btn-info" asp-controller="Question" asp-action="Get" asp-route-id="@question.Id.ToString()">Details</a>
+            </div>
+            <div class="col-sm-1">
+                <a type="button" class="btn btn-warning" asp-controller="Question" asp-action="Update" asp-route-id="@question.Id.ToString()">Update</a>
+            </div>
+            <div class="col-sm-1">
+                <a type="button" class="btn btn-danger" asp-controller="Question" asp-action="Delete" asp-route-id="@question.Id.ToString()">Delete</a>
+            </div>
+            <br />
+        </div>
+        <br />
+
+        <ul class="list-group">
+            @foreach (var answer in question.Answers)
+            {
+                <li class="list-group-item">@answer.Text</li>
+            }
+        </ul>
+    </div>
 }
 
 
