@@ -9,17 +9,17 @@
     <div class="mb-5">
 
         <div class="row">
-            <div class="col-sm-9">
+            <div class="col-sm-6">
                 <h3>@question.Text</h3>
             </div>
-            <div class="col-sm-1">
-                <a type="button" class="btn btn-info" asp-controller="Question" asp-action="Get" asp-route-id="@question.Id.ToString()">Details</a>
+            <div class="col-sm-2">
+                <a class="btn btn-info btn-block" asp-controller="Question" asp-action="Get" asp-route-id="@question.Id.ToString()">Details</a>
             </div>
-            <div class="col-sm-1">
-                <a type="button" class="btn btn-warning" asp-controller="Question" asp-action="Update" asp-route-id="@question.Id.ToString()">Update</a>
+            <div class="col-sm-2">
+                <a class="btn btn-primary btn-block" asp-controller="Question" asp-action="Update" asp-route-id="@question.Id.ToString()">Edit</a>
             </div>
-            <div class="col-sm-1">
-                <a type="button" class="btn btn-danger" asp-controller="Question" asp-action="Delete" asp-route-id="@question.Id.ToString()">Delete</a>
+            <div class="col-sm-2">
+                <a class="btn btn-danger btn-block" asp-controller="Question" asp-action="Delete" asp-route-id="@question.Id.ToString()">Delete</a>
             </div>
             <br />
         </div>
