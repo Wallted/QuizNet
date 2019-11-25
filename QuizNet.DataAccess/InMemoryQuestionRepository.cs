@@ -124,10 +124,7 @@ namespace QuizNet.DataAccess
             var prevQuestion = _questions.SingleOrDefault(x => x.Id == updatedQuestion.Id);
             _questions.Remove(prevQuestion);
             _questions.Add(updatedQuestion);
-            _questions = (from element in _questions
-                         orderby element.Id
-                         ascending
-                         select element).ToList();
+            _questions = _questions.OrderBy(question => question.Id).ToList();
         }
     }
 }
