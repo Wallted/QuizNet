@@ -37,30 +37,25 @@ namespace QuizNet.Controllers
         public IActionResult Create()
         {
             var newQuestion = new Question();
-            return View(newQuestion);
+            return View("QuestionForm", newQuestion);
         }
 
-        [HttpPost]
-        public IActionResult Create(Question question)
-        {
-            _questionRepository.Add(question);
-            
-            return RedirectToAction("Get", new { Id = question.Id});
-        }
-
-        public IActionResult Update(int id)
+        public IActionResult Edit(int id)
         {
             var questionToUpdate = _questionRepository.GetById(id);
 
-            return View(questionToUpdate);
+            return View("QuestionForm", questionToUpdate);
         }
 
         [HttpPost]
-        public IActionResult Update(Question questionToUpdate)
+        public IActionResult Save(Question question)
         {
-            _questionRepository.Update(questionToUpdate);
+            if (question.Id != 0)
+                _questionRepository.Update(question);
+            else
+                _questionRepository.Add(question);
 
-            return RedirectToAction("Get", new { Id = questionToUpdate.Id });
+            return RedirectToAction("Get", new { Id = question.Id });
         }
     }
 }

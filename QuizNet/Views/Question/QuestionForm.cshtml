@@ -1,11 +1,12 @@
 ﻿@model QuizNet.DataAccess.Models.Question
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "QuestionForm";
 }
 
-<h1>Create</h1>
+<h1>Question form</h1>
 
-<form method="post" asp-controller="Question" asp-action="Create">
+<form method="post" asp-controller="Question" asp-action="Save">
+    <input asp-for="Id" type="hidden" />
     Question text:
     <input class="form-control" asp-for="Text" />
 
@@ -39,6 +40,6 @@
         </label>
     </div>
     <br />
-    <button class="btn btn-secondary" type="submit">Create!</button>
+    <button class="btn btn-secondary btn-block" type="submit">Save!</button>
 </form>
 

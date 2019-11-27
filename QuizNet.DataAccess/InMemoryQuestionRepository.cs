@@ -121,10 +121,15 @@ namespace QuizNet.DataAccess
 
         public void Update(Question updatedQuestion)
         {
-            var prevQuestion = _questions.SingleOrDefault(x => x.Id == updatedQuestion.Id);
-            _questions.Remove(prevQuestion);
-            _questions.Add(updatedQuestion);
-            _questions = _questions.OrderBy(question => question.Id).ToList();
+            var questionToEdit = _questions.SingleOrDefault(x => x.Id == updatedQuestion.Id);
+            questionToEdit.Text = updatedQuestion.Text;
+            questionToEdit.CorrectAnswerIndex = updatedQuestion.CorrectAnswerIndex;
+
+            for (int i = 0; i < updatedQuestion.Answers.Length; i++)
+            {
+                questionToEdit.Answers[i].Text = updatedQuestion.Answers[i].Text;
+            }
+
         }
     }
 }
