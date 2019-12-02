@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row mb-3">
     <div class="col-sm-6 card">
         <div class="card-body">
             <h5 class="card-title">Create your own questions!</h5>
@@ -23,6 +23,13 @@
             <h5 class="card-title">See already created questions!</h5>
             <p class="card-text">Take a look at questions you have already created!</p>
             <a asp-controller="Question" asp-action="GetAll" class="btn btn-secondary">See questions!</a>
+        </div>
+    </div>
+    <div class="col-sm-6 card">
+        <div class="card-body">
+            <h5 class="card-title">Generate quiz</h5>
+            <p class="card-text">Generate random quiz.</p>
+            <a asp-controller="Question" asp-action="GenerateQuiz" class="btn btn-secondary">Generate!</a>
         </div>
     </div>
 </div>
