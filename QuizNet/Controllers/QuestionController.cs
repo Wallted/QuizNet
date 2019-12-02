@@ -9,27 +9,27 @@ namespace QuizNet.Controllers
 {
     public class QuestionController : Controller
     {
-        private readonly IQuestionRepository _questionRepository;
+        private readonly IQuestionService _questionService;
         private readonly IQuizService _quizService; 
 
-        public QuestionController(IQuestionRepository questionRepository, IQuizService quizService)
+        public QuestionController(IQuestionService questionService, IQuizService quizService)
         {
-            _questionRepository = questionRepository;
+            _questionService = questionService;
             _quizService = quizService;
         }
         public IActionResult GetAll()
         {
-            var questions = _questionRepository.GetAll();
+            var questions = _questionService.GetAll();
             return View(questions);
         }
         public IActionResult Get(int id)
         {
-            var question = _questionRepository.GetById(id);
+            var question = _questionService.GetById(id);
             return View(question);
         }
         public IActionResult Delete(int id)
         {
-            _questionRepository.Delete(id);
+            _questionService.Delete(id);
             return RedirectToAction("GetAll");
         }
 
@@ -41,8 +41,11 @@ namespace QuizNet.Controllers
 
         public IActionResult Edit(int id)
         {
-            var questionToEdit = _questionRepository.GetById(id);
-            var questionViewModel = new QuestionFormViewModel(questionToEdit);
+            var questionToEdit = _questionService.GetById(id);
+            var questionViewModel = new QuestionFormViewModel() {
+                Question = questionToEdit
+            };
+
             return View("QuestionForm", questionViewModel);
         }
 
@@ -52,12 +55,12 @@ namespace QuizNet.Controllers
             if (!ModelState.IsValid)
                 return View("QuestionForm", viewModel);
 
-            var question = viewModel.GetQuestion();
+            var question = viewModel.Question;
 
             if (question.Id != 0)
-                _questionRepository.Update(question);
+                _questionService.Update(question);
             else
-                _questionRepository.Add(question);
+                _questionService.Add(question);
 
             return RedirectToAction("Get", new { Id = question.Id });
         }

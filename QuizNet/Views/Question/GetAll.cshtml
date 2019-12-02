@@ -1,4 +1,5 @@
-﻿@model List<Question>
+﻿@model List<QuizNet.Logic.DTOs.QuestionDto>
+
 @{
     ViewData["Title"] = "GetAll";
 }
@@ -6,8 +7,7 @@
 
 <a class="btn btn-secondary"
    asp-controller="Question"
-   asp-action="Create"
-   >Add new question</a>
+   asp-action="Create">Add new question</a>
 <a class="btn btn-secondary"
    asp-controller="Question"
    asp-action="GenerateQuiz">Generate Quiz!</a>

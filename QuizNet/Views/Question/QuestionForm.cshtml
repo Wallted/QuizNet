@@ -11,10 +11,18 @@
     <span asp-validation-for="Question.Text" class="text-danger"></span>
     <input class="form-control" asp-for="Question.Text" />
 
-    Answer 1# <input class="form-control" asp-for="Question.Answers[0].Text" /> <br />
-    Answer 2# <input class="form-control" asp-for="Question.Answers[1].Text" /> <br />
-    Answer 3# <input class="form-control" asp-for="Question.Answers[2].Text" /> <br />
-    Answer 4# <input class="form-control" asp-for="Question.Answers[3].Text" /> <br />
+    Answer 1#
+    <span asp-validation-for="Question.Answers[0].Text" class="text-danger"></span>
+    <input class="form-control" asp-for="Question.Answers[0].Text" /> <br />
+    Answer 2#
+    <span asp-validation-for="Question.Answers[1].Text" class="text-danger"></span>
+    <input class="form-control" asp-for="Question.Answers[1].Text" /> <br />
+    Answer 3#
+    <span asp-validation-for="Question.Answers[2].Text" class="text-danger"></span>
+    <input class="form-control" asp-for="Question.Answers[2].Text" /> <br />
+    Answer 4#
+    <span asp-validation-for="Question.Answers[3].Text" class="text-danger"></span>
+    <input class="form-control" asp-for="Question.Answers[3].Text" /> <br />
 
     <div class="form-check">
         <input class="form-check-input" type="radio" value="0" asp-for="Question.CorrectAnswerIndex" id="option1" />

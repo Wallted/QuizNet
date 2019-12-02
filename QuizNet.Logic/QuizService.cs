@@ -1,4 +1,5 @@
-﻿using QuizNet.DataAccess;
+﻿using AutoMapper;
+using QuizNet.DataAccess;
 using QuizNet.Logic.DTOs;
 using QuizNet.Logic.Interfaces;
 using System;
@@ -10,28 +11,20 @@ namespace QuizNet.Logic
     public class QuizService : IQuizService
     {
         private readonly IQuestionRepository _questionRepository;
-        public QuizService(IQuestionRepository questionRepository)
+        private readonly IMapper _mapper;
+
+        public QuizService(IQuestionRepository questionRepository, IMapper mapper)
         {
             _questionRepository = questionRepository;
+            _mapper = mapper;
         }
+
         public List<QuestionDto> GenerateQuiz()
         {
             var questions = _questionRepository.GetAll().ToList();
             var randomQuestions = questions.OrderBy(x => Guid.NewGuid()).Take(2).ToList();
-
-            List<QuestionDto> randomQuestionsDto = randomQuestions.Select(x => new QuestionDto()
-            {
-                Id = x.Id,
-                CorrectAnswerIndex = x.CorrectAnswerIndex,
-                Text = x.Text,
-                Answers = x.Answers.Select(y => new AnswerDto()
-                {
-                    Id = y.Id,
-                    Text = y.Text,
-                    QuestionId = y.QuestionId
-                }).ToArray()
-            }).ToList();
-
+            
+            var randomQuestionsDto = _mapper.Map<List<QuestionDto>>(randomQuestions);
             return randomQuestionsDto;
         }
     }

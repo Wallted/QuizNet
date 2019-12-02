@@ -7,7 +7,7 @@ namespace QuizNet.Logic.DTOs
         public int Id { get; set; }
         [Required(ErrorMessage = "Please specify question text")]
         public string Text { get; set; }
-        [StringLength(5)]
+        [StringLength(300)]
         public AnswerDto[] Answers { get; set; }
         public int CorrectAnswerIndex { get; set; }
     }
