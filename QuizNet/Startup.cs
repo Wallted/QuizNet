@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using QuizNet.DataAccess;
 using QuizNet.Logic;
 using QuizNet.Logic.Interfaces;
+using QuizNet.Logic.Mapper;
 
 namespace QuizNet
 {
@@ -25,8 +23,10 @@ namespace QuizNet
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(MappingProfile));
             services.AddScoped<IQuestionRepository, InMemoryQuestionRepository>();
             services.AddScoped<IQuizService, QuizService>();
+            services.AddScoped<IQuestionService, QuestionService>();
             services.AddControllersWithViews();
         }
 
