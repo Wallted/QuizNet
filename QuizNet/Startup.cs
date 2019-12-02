@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using QuizNet.DataAccess;
+using QuizNet.Logic;
+using QuizNet.Logic.Interfaces;
 
 namespace QuizNet
 {
@@ -24,6 +26,7 @@ namespace QuizNet
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IQuestionRepository, InMemoryQuestionRepository>();
+            services.AddScoped<IQuizService, QuizService>();
             services.AddControllersWithViews();
         }
 

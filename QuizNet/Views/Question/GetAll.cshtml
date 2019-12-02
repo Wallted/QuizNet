@@ -8,6 +8,9 @@
    asp-controller="Question"
    asp-action="Create"
    >Add new question</a>
+<a class="btn btn-secondary"
+   asp-controller="Question"
+   asp-action="GenerateQuiz">Generate Quiz!</a>
 @foreach (var question in Model)
 {
     <div class="mb-5 mt-2">

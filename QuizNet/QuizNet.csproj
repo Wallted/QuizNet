@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\QuizNet.DataAccess\QuizNet.DataAccess.csproj" />
+    <ProjectReference Include="..\QuizNet.Logic\QuizNet.Logic.csproj" />
   </ItemGroup>
 
 </Project>
